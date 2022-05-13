@@ -1,7 +1,9 @@
 const express = require('express')
 const path = require('path')
 const { engine } = require('express-handlebars')
-const { title } = require('process')
+const usersRoutes = require('./routes/users.routes')
+const notesRoutes = require('./routes/notes.routes')
+const indexRoutes = require('./routes/index.routes')
 
 
 // Initialize
@@ -30,8 +32,9 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.get('/',(req,res) => {
-  res.render('index',{title: 'Home'})
-})
+app.use(indexRoutes)
+app.use('notes',notesRoutes)
+app.use('users',usersRoutes)
+
 
 module.exports = app
