@@ -1,0 +1,12 @@
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: #42A5F5;  /* fallback for old browsers */
+  
+  
+}
+span.footer{
+  margin-top: auto;
+}
