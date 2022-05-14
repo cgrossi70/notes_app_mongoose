@@ -28,13 +28,14 @@ app.use(express.urlencoded({extended: false}))
 
 // Globals 
 
-// Public 
-app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.use(indexRoutes)
-app.use('notes',notesRoutes)
-app.use('users',usersRoutes)
+app.use(notesRoutes)
+app.use(usersRoutes)
+
+// Public 
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 module.exports = app
