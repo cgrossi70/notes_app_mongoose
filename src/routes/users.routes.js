@@ -3,7 +3,7 @@ const { register, signin } = require('../controllers/users.controllers')
 
 const router = Router()
 
-router.get('/register',register)
-router.get('/signin',signin)
+router.get('/users/register',register)
+router.get('/users/signin',signin)
 
 module.exports = router

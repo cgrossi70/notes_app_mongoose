@@ -1,9 +1,8 @@
 const express = require('express')
 const path = require('path')
 const { engine } = require('express-handlebars')
-const usersRoutes = require('./routes/users.routes')
-const notesRoutes = require('./routes/notes.routes')
-const indexRoutes = require('./routes/index.routes')
+const methodOverride = require('method-override')
+const morgan = require('morgan')
 
 
 // Initialize
@@ -25,17 +24,17 @@ app.set('view engine','.hbs')
 // Middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-
+app.use(methodOverride('_method'))
+app.use(morgan('dev'))
 // Globals 
 
 
 // Routes
-app.use(indexRoutes)
-app.use(notesRoutes)
-app.use(usersRoutes)
+app.use(require('./routes/index.routes'))
+app.use(require('./routes/users.routes'))
+app.use(require('./routes/notes.routes'))
 
 // Public 
 app.use(express.static(path.join(__dirname, 'public')))
-
 
 module.exports = app
