@@ -7,24 +7,24 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
+          <a class="nav-link active" href="/about">About</a>
         </li>
         
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             Notes
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/notes">List Notes</a></li>
-            <li><a class="dropdown-item" href="/notes/add">Add a Note</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/notes">List Notes</a>
+            <a class="dropdown-item" href="/notes/add">Add a note</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/users/signin">SignIn</a>
+          <a class="nav-link active" aria-current="page" href="/users/login">SignIn</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" href="/users/register">Register</a>

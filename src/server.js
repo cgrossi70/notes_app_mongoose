@@ -3,6 +3,8 @@ const path = require('path')
 const { engine } = require('express-handlebars')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
+const session = require('express-session')
+const flash = require('connect-flash')
 
 
 // Initialize
@@ -26,8 +28,19 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
-// Globals 
+app.use(session({
+  secret: "my secret phrase",
+  resave: true, 
+  saveUninitialized: true
+}))
+app.use(flash())
 
+// Globals 
+app.use((req,res,next) => {
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  next()
+})
 
 // Routes
 app.use(require('./routes/index.routes'))

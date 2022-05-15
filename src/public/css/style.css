@@ -10,3 +10,11 @@ body{
 span.footer{
   margin-top: auto;
 }
+
+div.card {
+  border-radius: 10px
+}
+
+a.btn, button.btn {
+  border-radius: 5px;
+}

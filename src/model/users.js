@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   timestamps: true,
 })
 
-UserSchema.methods.encryptPasswprd = async (password) => {
+UserSchema.methods.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10)
   return await bcrypt.hash(password,salt)
 }
@@ -21,4 +21,6 @@ UserSchema.methods.checkPassword = async function (password) {
 }
 
 const User = model("User",UserSchema)
-module.exports = User
+module.exports = {
+  User,
+UserSchema}
