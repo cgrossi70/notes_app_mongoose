@@ -1,13 +1,15 @@
-const { use } = require('passport/lib')
-const  {User, UserSchema}=require('../model/users')
+const  {User}=require('../model/users')
+const passport = require ('passport')
 
 const renderLoginForm = (req, res) => {
   res.render('users/login', {title: 'login'})
 }
 
-const login = (req, res) => {
-  res.send('Login')
-}
+const login = passport.authenticate("local", {
+    successRedirect: "/notes",
+    failureRedirect: "/users/login",
+    failureFlash: true,
+  })
 
 const renderRegisterForm = (req, res) => {
   res.render('users/register', {title: 'Register'})
@@ -21,7 +23,7 @@ const addUser = async (req, res) => {
   if(password.length < 4)
     errors.push({error: 'Password must be at least 4 charanters' })
   
-  const userEmail = await User.findOne({emai: email})
+  const userEmail = await User.findOne({email: email})
   
   if(userEmail)
     errors.push({error: 'Email already exists' }) 
@@ -40,7 +42,9 @@ const addUser = async (req, res) => {
 }
 
 const logout = (req, res) => {
-  res.send('logout')
+  req.logout()
+  req.flash('success_msg','You are logged out ....')
+  res.redirect('/users/login')
 }
 
 module.exports = {

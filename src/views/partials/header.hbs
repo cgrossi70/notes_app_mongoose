@@ -11,24 +11,32 @@
         </li>
         
       </ul>
+      
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Notes
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/notes">List Notes</a>
-            <a class="dropdown-item" href="/notes/add">Add a note</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Logout</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/users/login">SignIn</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/users/register">Register</a>
-        </li>
+        {{#if user}}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              Notes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/notes">List Notes</a>
+              <a class="dropdown-item" href="/notes/add">Add a note</a>
+              
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/users/logout">Logout</a>
+          </li>
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/users/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/users/register">Register</a>
+          </li>
+          
+            
+        {{/if}}
       </ul>
     </div>
   </div>

@@ -4,12 +4,12 @@
         <h2>Login</h2>
       </div>
       <div class="card-body">
-        <form>
+        <form action="/users/login" method="POST">
           <div class="form-group mb-2">
-            <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter email address" autofocus> 
+            <input type="email" class="form-control input-sm" name="email" placeholder="Enter email address" autofocus> 
           </div>
           <div class="form-group mb-2">
-            <input type="password" class="form-control  input-sm" placeholder="Enter password" id="exampleInputPassword1">
+            <input type="password" class="form-control  input-sm" name="password" placeholder="Enter password" >
           </div>
           <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         </form> 

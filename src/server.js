@@ -5,10 +5,12 @@ const methodOverride = require('method-override')
 const morgan = require('morgan')
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport =require ('passport')
 
 
 // Initialize
 const app = express()
+require('./helpers/passport')
 
 // Settings
 app.set('port',process.env.PORT)
@@ -33,12 +35,17 @@ app.use(session({
   resave: true, 
   saveUninitialized: true
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 
 // Globals 
 app.use((req,res,next) => {
   res.locals.success_msg = req.flash('success_msg')
   res.locals.error_msg = req.flash('error_msg')
+  // Errores devueltos por passport
+  res.locals.error = req.flash("error");
+  res.locals.user  = req.user || null
   next()
 })
 
